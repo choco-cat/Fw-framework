@@ -4,8 +4,8 @@
  * session start
  */
 
-spl_autoload_register(function($class_name) {
-    $file = $_SERVER["DOCUMENT_ROOT"] . '/' .  strtolower($class_name) . '.php';
+spl_autoload_register(function($className) {
+    $file = $_SERVER["DOCUMENT_ROOT"] . '/' .  strtolower($className) . '.php';
     if (file_exists($file)) {
        include $file;
     }

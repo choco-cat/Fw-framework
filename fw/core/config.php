@@ -5,35 +5,24 @@
 
 namespace Fw\Core;
 
+use const Fw\GONFIG;
+
+include realpath(__DIR__) . './../config.php';
+
 class Config
 {
-    /**
-     * @var mixed
-     */
-    private $config;
-
-    public function __construct()
+    public static function get($path)
     {
-        $this->config = parse_ini_file(__DIR__ . './../config.ini', true);
+        $cloneConfig = GONFIG;
+        return self::getConfigValue($path,  $cloneConfig);
     }
 
-    public function get($path)
+    private static function getConfigValue($path, $cloneConfig)
     {
-        $cloneConfig = $this->config;
-        return $this->getConfigValue($path,  $cloneConfig);
-    }
-
-    private function getConfigValue($path, $cloneConfig)
-    {
-        if (!is_array($cloneConfig)) {
-            return $cloneConfig;
-        }
         $keys = explode('/', $path);
-        $key = array_shift($keys);
-        $cloneConfig = $cloneConfig[$key];
-        if (count($keys) === 0) {
-            return $cloneConfig;
+        foreach($keys as $key) {
+          $cloneConfig = $cloneConfig[$key];
         }
-        return $this->getConfigValue(implode('/', $keys), $cloneConfig, false);
+       return $cloneConfig;
     }
 }
