@@ -2,3 +2,5 @@
 /**
  * Global settings
  */
+
+namespace Fw\Core;
