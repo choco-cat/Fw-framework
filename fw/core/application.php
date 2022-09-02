@@ -2,12 +2,16 @@
 /**
  * Base app class
  */
+namespace Fw\Core;
 
-namespace Fw;
-
-final class App
+final class Application
 {
+    private $components = [];
+    private $pager = null;
     private static $instance = null;
+    private $template = null;
+
+    private function __construct() {}
 
     public static function getInstance()
     {
