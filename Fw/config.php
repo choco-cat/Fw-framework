@@ -8,9 +8,10 @@ if (!defined('IN_FW')) {
 
 const GONFIG = array(
     'db' => array(
-        'login' => 'root'
+        'login' => 'root',
     ),
     'site' => array(
-        'path' => '/userdata/usr'
+        'template' => 'default',
+        'path' => '/userdata/usr',
     )
 );
