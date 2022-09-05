@@ -6,12 +6,15 @@
 namespace Fw\Core;
 
 use const Fw\GONFIG;
+use Fw\Core\Traits\Single;
 
 include realpath(__DIR__) . './../config.php';
 
 class Config
 {
-    public static function get($path)
+    use Single;
+
+    public function get($path)
     {
         $cloneConfig = GONFIG;
         return self::getConfigValue($path,  $cloneConfig);

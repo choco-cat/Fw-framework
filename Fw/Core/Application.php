@@ -4,17 +4,13 @@
  */
 namespace Fw\Core;
 
+use Fw\Core\Traits\Single;
+
 final class Application
 {
+    use Single;
+
     private $components = [];
     private $pager = null;
-    private static $instance = null;
     private $template = null;
-
-    private function __construct() {}
-
-    public static function getInstance()
-    {
-        return self::$instance ?? new self();
-    }
 }
