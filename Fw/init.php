@@ -4,6 +4,8 @@
  * session start
  */
 
+define('IN_FW', true);
+
 spl_autoload_register(function($className) {
     $file = $_SERVER['DOCUMENT_ROOT'] . '/' . str_replace('\\', '/', $className) . '.php';
     if (file_exists($file)) {
