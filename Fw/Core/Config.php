@@ -8,8 +8,7 @@ namespace Fw\Core;
 use const Fw\GONFIG;
 use Fw\Core\Traits\Single;
 
-if (!defined('IN_FW'))
-{
+if (!defined('IN_FW')) {
     exit;
 }
 

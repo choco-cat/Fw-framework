@@ -3,8 +3,7 @@
  * App routes
  */
 
-if (!defined('IN_FW'))
-{
+if (!defined('IN_FW')) {
     exit;
 }
 

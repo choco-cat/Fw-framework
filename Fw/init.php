@@ -4,6 +4,8 @@
  * session start
  */
 
+use Fw\Core\Application;
+
 define('IN_FW', true);
 
 spl_autoload_register(function($className) {
@@ -13,3 +15,5 @@ spl_autoload_register(function($className) {
     }
 });
 session_start();
+
+$app = Application::getInstance();

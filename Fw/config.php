@@ -2,8 +2,7 @@
 
 namespace Fw;
 
-if (!defined('IN_FW'))
-{
+if (!defined('IN_FW')) {
     exit;
 }
 

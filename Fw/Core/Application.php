@@ -6,8 +6,7 @@ namespace Fw\Core;
 
 use Fw\Core\Traits\Single;
 
-if (!defined('IN_FW'))
-{
+if (!defined('IN_FW')) {
     exit;
 }
 
