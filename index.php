@@ -1,9 +1,8 @@
 <?php
 
-use Fw\Core\Config;
+use Fw\Core\Application;
 
 include './Fw/init.php';
-$config = Config::getInstance();
-echo $config->get('db/login');
-echo '<br>';
-echo $config->get('site/path');
+
+$app->header();
+$app->footer();

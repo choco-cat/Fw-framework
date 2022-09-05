@@ -15,5 +15,4 @@ spl_autoload_register(function($className) {
     }
 });
 session_start();
-
 $app = Application::getInstance();

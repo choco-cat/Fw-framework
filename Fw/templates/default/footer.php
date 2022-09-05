@@ -5,5 +5,7 @@ if (!defined('IN_FW')) {
 ?>
 
 </main>
-<footer/>
+<footer>
+    Footer default
+</footer>
 </html>

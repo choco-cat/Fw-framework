@@ -18,7 +18,7 @@ class Config
 {
     use Single;
 
-    public function get($path)
+    public static function get($path)
     {
         $cloneConfig = GONFIG;
         return self::getConfigValue($path,  $cloneConfig);

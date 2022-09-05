@@ -4,8 +4,11 @@ if (!defined('IN_FW')) {
 }
 ?>
 
+<!doctype html>
 <html>
 <head/>
 <body>
-<header/>
+<header>
+    Header default
+</header>
 <main>
