@@ -14,26 +14,30 @@ class Page
 
     private $properties = [];
 
+    const JS_HEAD_MACROS = '#FW_HEAD_JS#';
+    const CSS_HEAD_MACROS = '#FW_HEAD_CSS#';
+    const STR_HEAD_MACROS = '#FW_HEAD_STR#';
+
     private function __construct()
     {
-        $this->properties['#FW_HEAD_JS#'] = '';
-        $this->properties['#FW_HEAD_CSS#'] = '';
-        $this->properties['#FW_HEAD_STR#'] = '';
+        $this->properties[static::JS_HEAD_MACROS] = '';
+        $this->properties[static::CSS_HEAD_MACROS] = '';
+        $this->properties[static::STR_HEAD_MACROS] = '';
     }
 
     public function addJs($src)
     {
-        $this->properties['#FW_HEAD_JS#'] .= $this->embedJs($src);
+        $this->properties[static::JS_HEAD_MACROS] .= $this->embedJs($src);
     }
 
     public function addCss($src)
     {
-        $this->properties['#FW_HEAD_CSS#'] .= $this->embedCss($src);
+        $this->properties[static::CSS_HEAD_MACROS] .= $this->embedCss($src);
     }
 
-    public function addStr($src)
+    public function addString($src)
     {
-        $this->properties['#FW_HEAD_STR#'] .= $src;
+        $this->properties[static::STR_HEAD_MACROS] .= $src;
     }
 
     private function embedJs($src)
@@ -46,11 +50,11 @@ class Page
         return '<link type="text/css" rel="stylesheet" href="' . $src . '">';
     }
 
-    public function showHead()
+    public static function showHead()
     {
-        echo '#FW_HEAD_JS#';
-        echo '#FW_HEAD_CSS#';
-        echo '#FW_HEAD_STR#';
+        echo static::JS_HEAD_MACROS;
+        echo static::CSS_HEAD_MACROS;
+        echo static::STR_HEAD_MACROS;
     }
 
     public function setProperty($id, $value)

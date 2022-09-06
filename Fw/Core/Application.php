@@ -50,7 +50,7 @@ final class Application
         self::$pager->addJs('https://google.by');
         self::$pager->addJs('https://mail.ru');
         self::$pager->addCss('/lib/w3schools30.css');
-        self::$pager->addStr('<meta property="og:image:height" content="228">');
+        self::$pager->addString('<meta property="og:image:height" content="228">');
         self::startBuffer();
         echo self::$template->getHeader();
     }

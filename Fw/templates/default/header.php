@@ -1,4 +1,7 @@
 <?php
+
+use Fw\Core\Page;
+
 if (!defined('IN_FW')) {
     exit;
 }
@@ -8,9 +11,7 @@ if (!defined('IN_FW')) {
 <html>
 <head>
     <?php
-        use Fw\Core\Page;
-        $pager = Page::getInstance();
-        $pager->showHead();
+        Page::showHead();
     ?>
 </head>
 <body>
