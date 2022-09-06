@@ -24,7 +24,6 @@ class Page
         $this->properties[static::JS_HEAD_MACROS] = '';
         $this->properties[static::CSS_HEAD_MACROS] = '';
         $this->properties[static::STR_HEAD_MACROS] = '';
-        $this->headProperties[static::JS_HEAD_MACROS] = [];
     }
 
     public function addJs($src)
@@ -81,14 +80,26 @@ class Page
         echo self::getProperty($id);
     }
 
+    private function getUniqueHeader($type)
+    {
+        $key = '#FW_HEAD_' . strtoupper($type) . '#';
+        if (!isset($this->headProperties[$key])) {
+            return;
+        }
+        $methodName = 'embed' . lcfirst($type);
+        $propertiesUnique = array_unique($this->headProperties[$key]);
+        if (method_exists($this, $methodName)) {
+            $properties = array_map(array($this, $methodName), $propertiesUnique);
+        } else {
+            $properties = $propertiesUnique;
+        }
+        $this->properties[$key] = implode('', $properties);
+    }
+
     public function getAllReplace()
     {
-        $propertiesJsUniq = array_unique($this->headProperties[static::JS_HEAD_MACROS]);
-        $propertiesJs = array_map(array($this, 'embedJs'), $propertiesJsUniq);
-        $this->properties[static::JS_HEAD_MACROS] = implode('', $propertiesJs);
-        $propertiesCssUniq = array_unique($this->headProperties[static::CSS_HEAD_MACROS]);
-        $propertiesCss= array_map(array($this, 'embedCss'), $propertiesCssUniq);
-        $this->properties[static::CSS_HEAD_MACROS] = implode('', $propertiesCss);
+        $this->getUniqueHeader('js');
+        $this->getUniqueHeader('css');
         return $this->properties;
     }
 }
