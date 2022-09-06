@@ -15,13 +15,7 @@ if (!defined('IN_FW')) {
     ?>
 </head>
 <body>
-<header>
-    Header default
-</header>
+<header>Header default</header>
 <main>
-    <h1>
-        <?php Page::showProperty('#FW_SITE_NAME#'); ?>
-    </h1>
-    <p>
-        <?php Page::showProperty('#FW_SITE_DESCRIPTION#'); ?>
-    </p>
+    <h1><?php Page::showProperty('#FW_SITE_NAME#'); ?></h1>
+    <?php Page::insertTag('p', Page::getProperty('#FW_SITE_DESCRIPTION#')); ?>

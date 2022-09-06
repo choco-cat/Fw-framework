@@ -40,6 +40,11 @@ class Page
         $this->properties[static::STR_HEAD_MACROS] .= $src;
     }
 
+    public static function insertTag($tag, $content)
+    {
+        echo "<$tag>$content</$tag>";
+    }
+
     private function embedJs($src)
     {
         return '<script type="text/javascript" src="' . $src . '"></script>';
@@ -57,9 +62,11 @@ class Page
         echo static::STR_HEAD_MACROS;
     }
 
-    public function setProperty($id, $value)
+    public function setProperty($id, $value = '')
     {
-        self::$properties[$id] = $value;
+        if(!empty($id)) {
+            self::$properties[$id] = $value;
+        }
     }
 
     public static function getProperty($id)
