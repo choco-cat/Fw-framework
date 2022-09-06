@@ -12,7 +12,7 @@ class Page
 {
     use Single;
 
-    private $properties = [];
+    private static $properties = [];
 
     const JS_HEAD_MACROS = '#FW_HEAD_JS#';
     const CSS_HEAD_MACROS = '#FW_HEAD_CSS#';
@@ -59,17 +59,17 @@ class Page
 
     public function setProperty($id, $value)
     {
-
+        self::$properties[$id] = $value;
     }
 
-    public function getProperty($src)
+    public static function getProperty($id)
     {
-
+        return self::$properties[$id] ?? '';
     }
 
-    public function showProperty($src)
+    public static function showProperty($id)
     {
-
+        echo self::getProperty($id);
     }
 
     public function getAllReplace()

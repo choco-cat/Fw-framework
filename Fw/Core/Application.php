@@ -45,12 +45,19 @@ final class Application
         ob_clean();
     }
 
-    public function header()
+    public function initialPageParams()
     {
         self::$pager->addJs('https://google.by');
         self::$pager->addJs('https://mail.ru');
         self::$pager->addCss('/lib/w3schools30.css');
         self::$pager->addString('<meta property="og:image:height" content="228">');
+        self::$pager->setProperty('#FW_SITE_NAME#', 'Название сайта');
+        self::$pager->setProperty('#FW_SITE_DESCRIPTION#', 'О чем этот сайт - длинный текст');
+    }
+
+    public function header()
+    {
+        self::initialPageParams();
         self::startBuffer();
         echo self::$template->getHeader();
     }

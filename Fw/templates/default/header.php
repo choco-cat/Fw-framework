@@ -19,3 +19,9 @@ if (!defined('IN_FW')) {
     Header default
 </header>
 <main>
+    <h1>
+        <?php Page::showProperty('#FW_SITE_NAME#'); ?>
+    </h1>
+    <p>
+        <?php Page::showProperty('#FW_SITE_DESCRIPTION#'); ?>
+    </p>
