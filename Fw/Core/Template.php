@@ -22,11 +22,11 @@ class Template
 
     public function getHeader()
     {
-        return file_get_contents(__DIR__ . './../templates/' . self::$template . '/header.php');
+        include(__DIR__ . './../templates/' . self::$template . '/header.php');
     }
 
     public function getFooter()
     {
-        return file_get_contents(__DIR__ . './../templates/' . self::$template . '/footer.php');
+        include (__DIR__ . './../templates/' . self::$template . '/footer.php');
     }
 }

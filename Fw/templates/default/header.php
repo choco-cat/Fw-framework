@@ -6,7 +6,13 @@ if (!defined('IN_FW')) {
 
 <!doctype html>
 <html>
-<head/>
+<head>
+    <?php
+        use Fw\Core\Page;
+        $pager = Page::getInstance();
+        $pager->showHead();
+    ?>
+</head>
 <body>
 <header>
     Header default
