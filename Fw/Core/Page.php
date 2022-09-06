@@ -13,6 +13,7 @@ class Page
     use Single;
 
     private static $properties = [];
+    private $headProperties = [];
 
     const JS_HEAD_MACROS = '#FW_HEAD_JS#';
     const CSS_HEAD_MACROS = '#FW_HEAD_CSS#';
@@ -23,16 +24,17 @@ class Page
         $this->properties[static::JS_HEAD_MACROS] = '';
         $this->properties[static::CSS_HEAD_MACROS] = '';
         $this->properties[static::STR_HEAD_MACROS] = '';
+        $this->headProperties[static::JS_HEAD_MACROS] = [];
     }
 
     public function addJs($src)
     {
-        $this->properties[static::JS_HEAD_MACROS] .= $this->embedJs($src);
+        $this->headProperties[static::JS_HEAD_MACROS][] = $src;
     }
 
     public function addCss($src)
     {
-        $this->properties[static::CSS_HEAD_MACROS] .= $this->embedCss($src);
+        $this->headProperties[static::CSS_HEAD_MACROS][] = $src;
     }
 
     public function addString($src)
@@ -81,6 +83,12 @@ class Page
 
     public function getAllReplace()
     {
+        $propertiesJsUniq = array_unique($this->headProperties[static::JS_HEAD_MACROS]);
+        $propertiesJs = array_map(array($this, 'embedJs'), $propertiesJsUniq);
+        $this->properties[static::JS_HEAD_MACROS] = implode('', $propertiesJs);
+        $propertiesCssUniq = array_unique($this->headProperties[static::CSS_HEAD_MACROS]);
+        $propertiesCss= array_map(array($this, 'embedCss'), $propertiesCssUniq);
+        $this->properties[static::CSS_HEAD_MACROS] = implode('', $propertiesCss);
         return $this->properties;
     }
 }

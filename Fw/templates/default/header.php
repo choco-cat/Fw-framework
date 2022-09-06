@@ -10,9 +10,7 @@ if (!defined('IN_FW')) {
 <!doctype html>
 <html>
 <head>
-    <?php
-        Page::showHead();
-    ?>
+    <?php Page::showHead(); ?>
 </head>
 <body>
 <header>Header default</header>
