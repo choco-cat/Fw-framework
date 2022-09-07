@@ -3,6 +3,7 @@
 namespace Fw\Core;
 
 use Fw\Core\Traits\Singleton;
+use \Ds\Set;
 
 if (!defined('IN_FW')) {
     exit;
@@ -57,7 +58,7 @@ class Page
         return "<link type=\"text/css\" rel=\"stylesheet\" href=\"$src\">\r\n";
     }
 
-    public static function showHead()
+    public function showHead()
     {
         echo static::JS_HEAD_MACROS;
         echo static::CSS_HEAD_MACROS;
@@ -76,7 +77,7 @@ class Page
         return $this->properties[$id] ?? '';
     }
 
-    public static function showProperty($id)
+    public function showProperty($id)
     {
         echo $id;
     }

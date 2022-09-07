@@ -13,6 +13,7 @@ trait Singleton
 
     public static function getInstance()
     {
-        return self::$instance ?? new self();
+        self::$instance = self::$instance ?? new self();
+        return self::$instance;
     }
 }
