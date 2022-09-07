@@ -12,7 +12,7 @@ class Page
 {
     use Single;
 
-    private static $properties = [];
+    private $properties = [];
     private $headProperties = [];
 
     const JS_HEAD_MACROS = '#FW_HEAD_JS#';
@@ -24,16 +24,22 @@ class Page
         $this->properties[static::JS_HEAD_MACROS] = '';
         $this->properties[static::CSS_HEAD_MACROS] = '';
         $this->properties[static::STR_HEAD_MACROS] = '';
+        $this->headProperties[static::JS_HEAD_MACROS] = [];
+        $this->headProperties[static::CSS_HEAD_MACROS] = [];
     }
 
     public function addJs($src)
     {
-        $this->headProperties[static::JS_HEAD_MACROS][] = $src;
+        if (!in_array($src, $this->headProperties[static::JS_HEAD_MACROS])) {
+            $this->headProperties[static::JS_HEAD_MACROS][] = $src;
+        }
     }
 
     public function addCss($src)
     {
-        $this->headProperties[static::CSS_HEAD_MACROS][] = $src;
+        if (!in_array($src, $this->headProperties[static::CSS_HEAD_MACROS])) {
+            $this->headProperties[static::CSS_HEAD_MACROS][] = $src;
+        }
     }
 
     public function addString($src)
@@ -41,19 +47,14 @@ class Page
         $this->properties[static::STR_HEAD_MACROS] .= $src;
     }
 
-    public static function insertTag($tag, $content)
-    {
-        echo "<$tag>$content</$tag>";
-    }
-
     private function embedJs($src)
     {
-        return '<script type="text/javascript" src="' . $src . '"></script>';
+        return "<script type=\"text/javascript\" src=\"$src\"></script>\r\n";
     }
 
     private function embedCss($src)
     {
-        return '<link type="text/css" rel="stylesheet" href="' . $src . '">';
+        return "<link type=\"text/css\" rel=\"stylesheet\" href=\"$src\">\r\n";
     }
 
     public static function showHead()
@@ -66,7 +67,7 @@ class Page
     public function setProperty($id, $value = '')
     {
         if(!empty($id)) {
-            self::$properties[$id] = $value;
+            $this->properties[$id] = $value;
         }
     }
 
@@ -87,11 +88,10 @@ class Page
             return;
         }
         $methodName = 'embed' . lcfirst($type);
-        $propertiesUnique = array_unique($this->headProperties[$key]);
         if (method_exists($this, $methodName)) {
-            $properties = array_map(array($this, $methodName), $propertiesUnique);
+            $properties = array_map(array($this, $methodName), $this->headProperties[$key]);
         } else {
-            $properties = $propertiesUnique;
+            $properties = $this->headProperties[$key];
         }
         $this->properties[$key] = implode('', $properties);
     }

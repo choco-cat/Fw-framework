@@ -16,4 +16,4 @@ if (!defined('IN_FW')) {
 <header>Header default</header>
 <main>
     <h1><?php Page::showProperty('#FW_SITE_NAME#'); ?></h1>
-    <?php Page::insertTag('p', Page::getProperty('#FW_SITE_DESCRIPTION#')); ?>
+    <?php Page::showProperty('#FW_SITE_DESCRIPTION#'); ?>
