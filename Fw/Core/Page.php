@@ -89,13 +89,13 @@ class Page
         echo $this->createPropertyId($id);
     }
 
-    private function getHeader($key)
+    private function glueArray($key)
     {
         if (!isset($this->headProperties[$key])) {
             return;
         }
         $parts = explode('_', $key);
-        $type = $parts[1];
+        $type = $parts[1] ?? '';
         $methodName = 'embed' . ucfirst($type);
         if (method_exists($this, $methodName)) {
             $properties = array_map(array($this, $methodName), $this->headProperties[$key]);
@@ -107,8 +107,8 @@ class Page
 
     public function getAllReplace()
     {
-        $this->getHeader(JS_HEAD_KEY);
-        $this->getHeader(CSS_HEAD_KEY);
+        $this->glueArray(JS_HEAD_KEY);
+        $this->glueArray(CSS_HEAD_KEY);
         return $this->properties;
     }
 }
