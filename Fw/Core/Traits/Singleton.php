@@ -5,7 +5,7 @@ if (!defined('IN_FW')) {
     exit;
 }
 
-trait Single
+trait Singleton
 {
     private static $instance = null;
 

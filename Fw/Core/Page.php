@@ -2,7 +2,7 @@
 
 namespace Fw\Core;
 
-use Fw\Core\Traits\Single;
+use Fw\Core\Traits\Singleton;
 
 if (!defined('IN_FW')) {
     exit;
@@ -10,7 +10,7 @@ if (!defined('IN_FW')) {
 
 class Page
 {
-    use Single;
+    use Singleton;
 
     private $properties = [];
     private $headProperties = [];

@@ -6,7 +6,7 @@ namespace Fw\Core;
 
 use Fw\Core\Template;
 use Fw\Core\Page;
-use Fw\Core\Traits\Single;
+use Fw\Core\Traits\Singleton;
 
 if (!defined('IN_FW')) {
     exit;
@@ -14,7 +14,7 @@ if (!defined('IN_FW')) {
 
 final class Application
 {
-    use Single;
+    use Singleton;
 
     private $components = [];
     private static $pager = null;

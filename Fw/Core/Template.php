@@ -2,7 +2,7 @@
 
 namespace Fw\Core;
 
-use Fw\Core\Traits\Single;
+use Fw\Core\Traits\Singleton;
 use Fw\Core\Config;
 
 if (!defined('IN_FW')) {
@@ -11,7 +11,7 @@ if (!defined('IN_FW')) {
 
 class Template
 {
-    use Single;
+    use Singleton;
 
     private static $template;
 
