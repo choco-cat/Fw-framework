@@ -61,12 +61,12 @@ final class Application
     {
         self::initialPageParams();
         self::startBuffer();
-        echo $this->template->getHeader();
+        $this->template->showHeader();
     }
 
     public function footer()
     {
-        echo $this->template->getFooter();
+        $this->template->showFooter();
         $this->endBuffer();
     }
 }

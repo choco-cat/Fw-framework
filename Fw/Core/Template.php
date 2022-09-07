@@ -13,22 +13,32 @@ class Template
 {
     use Singleton;
 
-    private static $template;
+    private $template;
     private $templateDir;
 
     private function __construct()
     {
-        self::$template = Config::get('site/template');
-        $this->templateDir = __DIR__ . './../templates/' . self::$template . '/';
+        $this->template = Config::get('site/template');
+        $this->templateDir = __DIR__ . './../templates/' . $this->template . '/';
     }
 
-    public function getHeader()
+    public function includeHeader()
     {
         include($this->templateDir. 'header.php');
     }
 
-    public function getFooter()
+    public function showHeader()
+    {
+        echo $this->includeHeader();
+    }
+
+    public function includeFooter()
     {
         include ($this->templateDir. 'footer.php');
+    }
+
+    public function showFooter()
+    {
+        echo $this->includeFooter();
     }
 }
