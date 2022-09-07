@@ -71,17 +71,17 @@ class Page
         }
     }
 
-    public static function getProperty($id)
+    public function getProperty($id)
     {
-        return self::$properties[$id] ?? '';
+        return $this->properties[$id] ?? '';
     }
 
     public static function showProperty($id)
     {
-        echo self::getProperty($id);
+        echo $id;
     }
 
-    private function getUniqueHeader($type)
+    private function getHeader($type)
     {
         $key = '#FW_HEAD_' . strtoupper($type) . '#';
         if (!isset($this->headProperties[$key])) {
@@ -98,8 +98,8 @@ class Page
 
     public function getAllReplace()
     {
-        $this->getUniqueHeader('js');
-        $this->getUniqueHeader('css');
+        $this->getHeader('js');
+        $this->getHeader('css');
         return $this->properties;
     }
 }

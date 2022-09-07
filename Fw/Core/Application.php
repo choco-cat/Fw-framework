@@ -17,13 +17,13 @@ final class Application
     use Singleton;
 
     private $components = [];
-    private static $pager = null;
-    private static $template = null;
+    private $pager = null;
+    private $template = null;
 
     private function __construct()
     {
-        self::$template = Template::getInstance();
-        self::$pager = Page::getInstance();
+        $this->template = Template::getInstance();
+        $this->pager = Page::getInstance();
     }
 
     public function startBuffer()
@@ -35,7 +35,7 @@ final class Application
     {
         $output = ob_get_contents();
         ob_end_clean();
-        $allMacros = self::$pager->getAllReplace();
+        $allMacros = $this->pager->getAllReplace();
         $output = str_replace(array_keys($allMacros), array_values($allMacros), $output);
         echo $output;
     }
@@ -47,26 +47,26 @@ final class Application
 
     public function initialPageParams()
     {
-        self::$pager->addJs('https://google.by');
-        self::$pager->addCss('/lib/w3schools30.css');
-        self::$pager->addJs('https://mail.ru');
-        self::$pager->addCss('/lib/w3schools30.css');
-        self::$pager->addJs('https://mail.ru');
-        self::$pager->addString('<meta property="og:image:height" content="228">');
-        self::$pager->setProperty('#FW_SITE_NAME#', 'Название сайта');
-        self::$pager->setProperty('#FW_SITE_DESCRIPTION#', 'О чем этот сайт - длинный текст');
+        $this->pager->addJs('https://google.by');
+        $this->pager->addCss('/lib/w3schools30.css');
+        $this->pager->addJs('https://mail.ru');
+        $this->pager->addCss('/lib/w3schools30.css');
+        $this->pager->addJs('https://mail.ru');
+        $this->pager->addString('<meta property="og:image:height" content="228">');
+        $this->pager->setProperty('#FW_SITE_NAME#', 'Название сайта');
+        $this->pager->setProperty('#FW_SITE_DESCRIPTION#', 'О чем этот сайт - длинный текст');
     }
 
     public function header()
     {
         self::initialPageParams();
         self::startBuffer();
-        echo self::$template->getHeader();
+        echo $this->template->getHeader();
     }
 
     public function footer()
     {
-        echo self::$template->getFooter();
-        self::endBuffer();
+        echo $this->template->getFooter();
+        $this->endBuffer();
     }
 }

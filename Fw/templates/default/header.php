@@ -16,4 +16,5 @@ if (!defined('IN_FW')) {
 <header>Header default</header>
 <main>
     <h1><?php Page::showProperty('#FW_SITE_NAME#'); ?></h1>
-    <?php Page::showProperty('#FW_SITE_DESCRIPTION#'); ?>
+    <p><?php Page::showProperty('#FW_SITE_DESCRIPTION#'); ?></p>
+

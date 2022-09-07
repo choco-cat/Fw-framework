@@ -14,19 +14,21 @@ class Template
     use Singleton;
 
     private static $template;
+    private $templateDir;
 
     private function __construct()
     {
         self::$template = Config::get('site/template');
+        $this->templateDir = __DIR__ . './../templates/' . self::$template . '/';
     }
 
     public function getHeader()
     {
-        include(__DIR__ . './../templates/' . self::$template . '/header.php');
+        include($this->templateDir. 'header.php');
     }
 
     public function getFooter()
     {
-        include (__DIR__ . './../templates/' . self::$template . '/footer.php');
+        include ($this->templateDir. 'footer.php');
     }
 }
