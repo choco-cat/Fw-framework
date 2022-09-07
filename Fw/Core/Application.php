@@ -53,8 +53,8 @@ final class Application
         $this->pager->addCss('/lib/w3schools30.css');
         $this->pager->addJs('https://mail.ru');
         $this->pager->addString('<meta property="og:image:height" content="228">');
-        $this->pager->setProperty('#FW_SITE_NAME#', 'Название сайта');
-        $this->pager->setProperty('#FW_SITE_DESCRIPTION#', 'О чем этот сайт - длинный текст');
+        $this->pager->setProperty('site_name', 'Название сайта');
+        $this->pager->setProperty('site_description', 'О чем этот сайт - длинный текст');
     }
 
     public function header()

@@ -16,5 +16,5 @@ $page = Page::getInstance();
 <body>
 <header>Header default</header>
 <main>
-    <h1><?php $page->showProperty('#FW_SITE_NAME#'); ?></h1>
-    <p><?php $page->showProperty('#FW_SITE_DESCRIPTION#'); ?></p>
+    <h1><?php $page->showProperty('site_name'); ?></h1>
+    <p><?php $page->showProperty('site_description'); ?></p>

@@ -3,11 +3,16 @@
 namespace Fw\Core;
 
 use Fw\Core\Traits\Singleton;
-use \Ds\Set;
 
 if (!defined('IN_FW')) {
     exit;
 }
+
+const SYMBOL_START = '#FW_';
+const SYMBOL_END = '#';
+const JS_HEAD_KEY = 'head_js';
+const CSS_HEAD_KEY = 'head_css';
+const STR_HEAD_KEY = 'head_str';
 
 class Page
 {
@@ -16,41 +21,38 @@ class Page
     private $properties = [];
     private $headProperties = [];
 
-    const JS_HEAD_MACROS = '#FW_HEAD_JS#';
-    const CSS_HEAD_MACROS = '#FW_HEAD_CSS#';
-    const STR_HEAD_MACROS = '#FW_HEAD_STR#';
-
     private function __construct()
     {
-        $this->properties[static::JS_HEAD_MACROS] = '';
-        $this->properties[static::CSS_HEAD_MACROS] = '';
-        $this->properties[static::STR_HEAD_MACROS] = '';
-        $this->headProperties[static::JS_HEAD_MACROS] = [];
-        $this->headProperties[static::CSS_HEAD_MACROS] = [];
+        $this->setProperty(JS_HEAD_KEY);
+        $this->setProperty(CSS_HEAD_KEY);
+        $this->setProperty(STR_HEAD_KEY);
+        $this->headProperties[JS_HEAD_KEY] = [];
+        $this->headProperties[CSS_HEAD_KEY] = [];
     }
 
     public function addJs($src)
     {
-        if (!in_array($src, $this->headProperties[static::JS_HEAD_MACROS])) {
-            $this->headProperties[static::JS_HEAD_MACROS][] = $src;
+        if (!in_array($src, $this->headProperties[JS_HEAD_KEY])) {
+            $this->headProperties[JS_HEAD_KEY][] = $src;
         }
     }
 
     public function addCss($src)
     {
-        if (!in_array($src, $this->headProperties[static::CSS_HEAD_MACROS])) {
-            $this->headProperties[static::CSS_HEAD_MACROS][] = $src;
+        if (!in_array($src, $this->headProperties[CSS_HEAD_KEY])) {
+            $this->headProperties[CSS_HEAD_KEY][] = $src;
         }
     }
 
     public function addString($src)
     {
-        $this->properties[static::STR_HEAD_MACROS] .= $src;
+        $str = $this->getProperty(STR_HEAD_KEY);
+        $this->setProperty(STR_HEAD_KEY,  $str . $src);
     }
 
     private function embedJs($src)
     {
-        return "<script type=\"text/javascript\" src=\"$src\"></script>\r\n";
+        return "<script type=\"text/javascript\" src=\"" . $src . "\"></script>\r\n";
     }
 
     private function embedCss($src)
@@ -60,15 +62,20 @@ class Page
 
     public function showHead()
     {
-        echo static::JS_HEAD_MACROS;
-        echo static::CSS_HEAD_MACROS;
-        echo static::STR_HEAD_MACROS;
+        $this->showProperty(JS_HEAD_KEY);
+        $this->showProperty(CSS_HEAD_KEY);
+        $this->showProperty(STR_HEAD_KEY);
+    }
+
+    public function createPropertyId($id)
+    {
+        return SYMBOL_START .strtoupper($id) . SYMBOL_END;
     }
 
     public function setProperty($id, $value = '')
     {
         if(!empty($id)) {
-            $this->properties[$id] = $value;
+            $this->properties[$this->createPropertyId($id)] = $value;
         }
     }
 
@@ -79,28 +86,29 @@ class Page
 
     public function showProperty($id)
     {
-        echo $id;
+        echo $this->createPropertyId($id);
     }
 
-    private function getHeader($type)
+    private function getHeader($key)
     {
-        $key = '#FW_HEAD_' . strtoupper($type) . '#';
         if (!isset($this->headProperties[$key])) {
             return;
         }
-        $methodName = 'embed' . lcfirst($type);
+        $parts = explode('_', $key);
+        $type = $parts[1];
+        $methodName = 'embed' . ucfirst($type);
         if (method_exists($this, $methodName)) {
             $properties = array_map(array($this, $methodName), $this->headProperties[$key]);
         } else {
             $properties = $this->headProperties[$key];
         }
-        $this->properties[$key] = implode('', $properties);
+        $this->properties[$this->createPropertyId($key)] = implode('', $properties);
     }
 
     public function getAllReplace()
     {
-        $this->getHeader('js');
-        $this->getHeader('css');
+        $this->getHeader(JS_HEAD_KEY);
+        $this->getHeader(CSS_HEAD_KEY);
         return $this->properties;
     }
 }
