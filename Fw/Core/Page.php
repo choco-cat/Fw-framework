@@ -84,7 +84,7 @@ class Page
 
     public function getProperty($id)
     {
-        return $this->properties[$id] ?? '';
+        return $this->properties[$this->createPropertyId($id)] ?? '';
     }
 
     public function showProperty($id)
@@ -93,22 +93,6 @@ class Page
     }
 
     private function glueArray($key)
-    {
-        if (!isset($this->headProperties[$key])) {
-            return;
-        }
-        $parts = explode('_', $key);
-        $type = $parts[1] ?? '';
-        $methodName = 'embed' . ucfirst($type);
-        if (method_exists($this, $methodName)) {
-            $properties = array_map(array($this, $methodName), $this->headProperties[$key]);
-        } else {
-            $properties = $this->headProperties[$key];
-        }
-        $this->properties[$this->createPropertyId($key)] = implode('', $properties);
-    }
-
-    private function glueArray2($key)
     {
         if (!isset($this->headProperties[$key])) {
             return;
