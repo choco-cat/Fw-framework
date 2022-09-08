@@ -30,18 +30,21 @@ class Page
         $this->headProperties[CSS_HEAD_KEY] = [];
     }
 
+    public function getUniqueKey($src)
+    {
+       return md5($src);
+    }
+
     public function addJs($src)
     {
-        if (!in_array($src, $this->headProperties[JS_HEAD_KEY])) {
-            $this->headProperties[JS_HEAD_KEY][] = $src;
-        }
+        $key = $this->getUniqueKey($src);
+        $this->headProperties[JS_HEAD_KEY][$key] = $src;
     }
 
     public function addCss($src)
     {
-        if (!in_array($src, $this->headProperties[CSS_HEAD_KEY])) {
-            $this->headProperties[CSS_HEAD_KEY][] = $src;
-        }
+        $key = $this->getUniqueKey($src);
+        $this->headProperties[CSS_HEAD_KEY][$key] = $src;
     }
 
     public function addString($src)

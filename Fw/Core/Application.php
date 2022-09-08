@@ -47,10 +47,11 @@ final class Application
 
     public function initialPageParams()
     {
-        $this->pager->addJs('https://google.by');
-        $this->pager->addCss('/lib/w3schools30.css');
+        $this->pager->addCss('/lib/wd3schools30.css');
         $this->pager->addJs('https://mail.ru');
-        $this->pager->addCss('/lib/w3schools30.css');
+        $this->pager->addJs('https://google.by');
+        $this->pager->addCss('/lib/wd3schools30.css');
+        $this->pager->addJs('https://sсhools30.js');
         $this->pager->addJs('https://mail.ru');
         $this->pager->addString('<meta property="og:image:height" content="228">');
         $this->pager->setProperty('site_name', 'Название сайта');
