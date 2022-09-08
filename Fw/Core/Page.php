@@ -108,6 +108,22 @@ class Page
         $this->properties[$this->createPropertyId($key)] = implode('', $properties);
     }
 
+    private function glueArray2($key)
+    {
+        if (!isset($this->headProperties[$key])) {
+            return;
+        }
+        $parts = explode('_', $key);
+        $type = $parts[1] ?? '';
+        $methodName = 'embed' . ucfirst($type);
+        if (method_exists($this, $methodName)) {
+            $properties = array_map(array($this, $methodName), $this->headProperties[$key]);
+        } else {
+            $properties = $this->headProperties[$key];
+        }
+        $this->properties[$this->createPropertyId($key)] = implode('', $properties);
+    }
+
     public function getAllReplace()
     {
         $this->glueArray(JS_HEAD_KEY);

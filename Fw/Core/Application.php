@@ -60,8 +60,8 @@ final class Application
 
     public function header()
     {
-        self::initialPageParams();
-        self::startBuffer();
+        $this->initialPageParams();
+        $this->startBuffer();
         $this->template->showHeader();
     }
 
