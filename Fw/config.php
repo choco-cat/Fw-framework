@@ -2,11 +2,16 @@
 
 namespace Fw;
 
+if (!defined('IN_FW')) {
+    exit;
+}
+
 const GONFIG = array(
     'db' => array(
-        'login' => 'root'
+        'login' => 'root',
     ),
     'site' => array(
-        'path' => '/userdata/usr'
+        'template' => 'default',
+        'path' => '/userdata/usr',
     )
 );

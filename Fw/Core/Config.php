@@ -7,6 +7,10 @@ namespace Fw\Core;
 
 use const Fw\GONFIG;
 
+if (!defined('IN_FW')) {
+    exit;
+}
+
 include realpath(__DIR__) . './../config.php';
 
 class Config
