@@ -10,8 +10,6 @@ if (!defined('IN_FW')) {
 
 class Request extends Dictionary
 {
-    private $data;
-
     public function __construct()
     {
         $this->data = $_REQUEST;

@@ -10,8 +10,6 @@ if (!defined('IN_FW')) {
 
 class Server extends Dictionary
 {
-    private $data;
-
     public function __construct()
     {
         $this->data = $_SERVER;

@@ -12,6 +12,8 @@ if (!defined('IN_FW')) {
 
 class Dictionary implements IteratorAggregate, ArrayAccess, Countable
 {
+    protected $data;
+
     public function getIterator()
     {
         return new \ArrayIterator($this);
@@ -19,25 +21,30 @@ class Dictionary implements IteratorAggregate, ArrayAccess, Countable
 
     public function count()
     {
+        return count($this->data);
     }
 
     public function offsetExists($offset)
     {
-        // TODO: Implement offsetExists() method.
+        return isset($this->data[$offset]);
     }
 
     public function offsetGet($offset)
     {
-        // TODO: Implement offsetGet() method.
+        return isset($this->data[$offset]) ? $this->data[$offset] : null;
     }
 
     public function offsetSet($offset, $value)
     {
-        // TODO: Implement offsetSet() method.
+        if(is_null($offset)) {
+            $this->data[] = $value;
+        } else {
+            $this->data[$offset] = $value;
+        }
     }
 
     public function offsetUnset($offset)
     {
-        // TODO: Implement offsetUnset() method.
+        unset($this->data[$offset]);
     }
 }
