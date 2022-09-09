@@ -2,7 +2,7 @@
 
 use Fw\Core\Application;
 
-include './Fw/init.php';
+include './fw/init.php';
 
 $app = Application::getInstance();
 $app->header();
