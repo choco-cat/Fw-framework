@@ -32,6 +32,11 @@ final class Application
         $this->server = new Server();
     }
 
+    public function includeComponent($component, $template, $params)
+    {
+        return $this->server;
+    }
+
     public function getServer()
     {
         return $this->server;
