@@ -4,6 +4,8 @@
  */
 namespace Fw\Core;
 
+use Fw\Core\Request;
+use Fw\Core\Server;
 use Fw\Core\Template;
 use Fw\Core\Page;
 use Fw\Core\Traits\Singleton;
@@ -19,11 +21,25 @@ final class Application
     private $components = [];
     private $pager = null;
     private $template = null;
+    private $request = null;
+    private $server = null;
 
     private function __construct()
     {
         $this->template = Template::getInstance();
         $this->pager = Page::getInstance();
+        $this->request = new Request();
+        $this->server = new Server();
+    }
+
+    public function getServer()
+    {
+        return $this->server;
+    }
+
+    public function getRequest()
+    {
+        return $this->request;
     }
 
     public function startBuffer()

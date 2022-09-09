@@ -1,4 +1,5 @@
 <?php
+
 namespace Fw\Core\Type;
 
 use IteratorAggregate;
@@ -13,6 +14,7 @@ class Dictionary implements IteratorAggregate, ArrayAccess, Countable
 {
     public function getIterator()
     {
+        return new \ArrayIterator($this);
     }
 
     public function count()
