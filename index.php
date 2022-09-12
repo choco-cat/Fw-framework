@@ -9,6 +9,9 @@ $app->header();
 ?>
 
 <pre>
+    ---------012.09.2022---------
+    1. Подключение компонента news.detail в Application
+
     ---------09.09.2022---------
     1. Создан класс Dictionary для наследования классами Request, Server
     2. Созданы конструкторы классов Request, Server
@@ -41,6 +44,8 @@ $app->header();
 </pre>
 
 <?php
+
+$app->includeComponent('news.detail', 'default', []);
 $app->footer();
 
 ?>

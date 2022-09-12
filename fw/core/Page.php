@@ -8,12 +8,6 @@ if (!defined('IN_FW')) {
     exit;
 }
 
-const SYMBOL_START = '#FW_';
-const SYMBOL_END = '#';
-const JS_HEAD_KEY = 'head_js';
-const CSS_HEAD_KEY = 'head_css';
-const STR_HEAD_KEY = 'head_str';
-
 class Page
 {
     use Singleton;

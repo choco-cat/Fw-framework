@@ -34,7 +34,9 @@ final class Application
 
     public function includeComponent($component, $template, $params)
     {
-        return $this->server;
+        $component = COMPONENTS_PATH . str_replace('.', '_', $component);
+        $news = new $component([]);
+        $news->executeComponent();
     }
 
     public function getServer()
@@ -68,6 +70,8 @@ final class Application
 
     public function initialPageParams()
     {
+        //можем обращаться к request, как к массиву $this->request['id'];
+        echo $this->request['id'];
         $this->pager->addCss('/lib/wd3schools30.css');
         $this->pager->addJs('https://mail.ru');
         $this->pager->addJs('https://google.by');
