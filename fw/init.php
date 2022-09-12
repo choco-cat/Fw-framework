@@ -16,7 +16,7 @@ spl_autoload_register(function ($className) {
     if (file_exists($file)) {
         include $file;
     } else if(strpos($className, '_')) {
-        $dirClass = str_replace('_', '.',  $className);
+        $dirClass = strtolower(str_replace('_', '.',  $className));
         $file =  $_SERVER['DOCUMENT_ROOT'] . '/' . str_replace('\\', '/', $dirClass) . '/.class.php';
         if (file_exists($file)) {
             include $file;
