@@ -10,9 +10,9 @@ abstract class Base
 {
     public $result = array();
     public $id;
-    public $params;
-    public $template;
-    public $__path;
+    protected $params;
+    protected $template;
+    protected $__path;
 
     abstract public function executeComponent();
 

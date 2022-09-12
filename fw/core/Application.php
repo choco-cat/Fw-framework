@@ -35,7 +35,7 @@ final class Application
     public function includeComponent($component, $template, $params)
     {
         $component = COMPONENTS_PATH . str_replace('.', '_', $component);
-        $news = new $component([]);
+        $news = new $component($template, $params);
         $news->executeComponent();
     }
 

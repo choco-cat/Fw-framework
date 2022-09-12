@@ -3,20 +3,23 @@
 namespace Fw\Components;
 
 use Fw\Core\Component\Base;
+use Fw\Core\Component\Template;
 
 if (!defined('IN_FW')) {
     exit;
 }
 
 // Логика работы компонента, принимает $arParams, рендерит шаблон
-class News_Detail extends Base
+class News_List extends Base
 {
-    public function __construct($arParams)
+    public function __construct($template, $arParams)
     {
+        $this->template = new Template('news.list', $template);
+        $this->params = $arParams;
     }
 
     public function executeComponent()
     {
-        echo 'executeComponent news.detail';
+        $this->template->render();
     }
 }

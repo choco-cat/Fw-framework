@@ -34,7 +34,7 @@ class Template
 
     public function includeFooter()
     {
-        include ($this->templateDir. 'footer.php');
+        include($this->templateDir. 'footer.php');
     }
 
     public function showFooter()
