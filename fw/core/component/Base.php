@@ -8,8 +8,8 @@ if (!defined('IN_FW')) {
 
 abstract class Base
 {
-    public $result = array();
-    public $id;
+    protected $result = array();
+    protected $id;
     protected $params;
     protected $template;
     protected $__path;

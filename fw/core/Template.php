@@ -14,17 +14,15 @@ class Template
     use Singleton;
 
     private $template;
-    private $templateDir;
 
     private function __construct()
     {
         $this->template = Config::get('site/template');
-        $this->templateDir = __DIR__ . './../templates/' . $this->template . '/';
     }
 
     public function includeHeader()
     {
-        include($this->templateDir. 'header.php');
+        include(TEMPLATES_PATH .  $this->template . '/header.php');
     }
 
     public function showHeader()
@@ -34,7 +32,7 @@ class Template
 
     public function includeFooter()
     {
-        include($this->templateDir. 'footer.php');
+        include(TEMPLATES_PATH.  $this->template . '/footer.php');
     }
 
     public function showFooter()

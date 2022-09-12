@@ -9,17 +9,18 @@ if (!defined('IN_FW')) {
     exit;
 }
 
-// Логика работы компонента, принимает $arParams, рендерит шаблон
+// Логика работы компонента, принимает $params, рендерит шаблон, передавая туда $result (данные для вывода)
 class News_List extends Base
 {
-    public function __construct($template, $arParams)
+    public function __construct($template, $params)
     {
         $this->template = new Template('news.list', $template);
-        $this->params = $arParams;
+        $this->params = $params;
     }
 
     public function executeComponent()
     {
+        //Передавать в шаблон $result
         $this->template->render();
     }
 }

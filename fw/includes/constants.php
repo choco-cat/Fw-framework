@@ -7,3 +7,4 @@ const CSS_HEAD_KEY = 'head_css';
 const STR_HEAD_KEY = 'head_str';
 const COMPONENTS_PATH = '\\Fw\\Components\\';
 const RELATIVE_COMPONENTS_PATH = 'fw/components/';
+const TEMPLATES_PATH = 'fw/templates/';

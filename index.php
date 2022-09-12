@@ -6,6 +6,7 @@ include './fw/init.php';
 
 $app = Application::getInstance();
 $app->header();
+
 ?>
 
 <pre>
