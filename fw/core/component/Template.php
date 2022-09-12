@@ -13,6 +13,7 @@ class Template
     private $__path;
     private $__relativePath;
     private $id;
+    public $result;
 
     public function __construct($id, $page)
     {
@@ -20,8 +21,12 @@ class Template
         $this->__relativePath = RELATIVE_COMPONENTS_PATH  . $id . '/templates/' . $page . '/';
     }
 
-    public function render($page = 'template')
+    public function render($result = [], $page = 'template')
     {
+        $this->result = $result;
+        if (file_exists($this->__relativePath . 'result_modifier.php')) {
+            include($this->__relativePath . 'result_modifier.php');
+        }
         $pager = Page::getInstance();
         if (file_exists($this->__relativePath . 'style.css')) {
             $pager->addCss($this->__relativePath . 'style.css');

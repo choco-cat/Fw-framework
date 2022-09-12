@@ -9,6 +9,7 @@ use Fw\Core\Server;
 use Fw\Core\Template;
 use Fw\Core\Page;
 use Fw\Core\Traits\Singleton;
+use Fw\Components;
 
 if (!defined('IN_FW')) {
     exit;
@@ -32,11 +33,15 @@ final class Application
         $this->server = new Server();
     }
 
-    public function includeComponent($component, $template, $params)
+    public function includeComponent($component, $idTemplate, $params)
     {
-        $component = COMPONENTS_PATH . str_replace('.', '_', $component);
-        $news = new $component($template, $params);
-        $news->executeComponent();
+        include_once(RELATIVE_COMPONENTS_PATH . $component .'\\'. '.class.php');
+        $componentRealPath =
+            COMPONENTS_PATH
+            . str_replace('.', '\\', $component) . '\\'
+            . COMPONENT_CLASS;
+        $component = new $componentRealPath($component, $idTemplate, $params);
+        $component->executeComponent();
     }
 
     public function getServer()
