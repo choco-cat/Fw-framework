@@ -39,5 +39,8 @@ class Template
         } else {
             throw new \Exception("Component template $this->id not found!");
         }
+        if (file_exists($this->__relativePath . 'component_epilog.php')) {
+            include($this->__relativePath . 'component_epilog.php');
+        }
     }
 }
