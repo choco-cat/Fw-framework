@@ -61,6 +61,16 @@ $app->includeComponent(
             'show_title' => 'N',
         ]
 );
+
+$app->includeComponent(
+    'interface.form',
+    'default',
+    [
+        'sort'    => 'id',
+        'limit' => 10,
+        'show_title' => 'N',
+    ]
+);
 $app->footer();
 
 ?>

@@ -38,7 +38,7 @@ final class Application
         include_once(RELATIVE_COMPONENTS_PATH . $component .'\\'. '.class.php');
         $componentRealPath =
             COMPONENTS_PATH
-            . str_replace('.', '\\', $component) . '\\'
+            . str_replace('.', '', $component) . '\\'
             . COMPONENT_CLASS;
         $component = new $componentRealPath($component, $idTemplate, $params);
         $component->executeComponent();

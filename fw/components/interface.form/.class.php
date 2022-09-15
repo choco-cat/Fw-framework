@@ -1,6 +1,6 @@
 <?php
 
-namespace Fw\Components\Interface\Form;
+namespace Fw\Components\InterfaceForm;
 
 use Fw\Core\Component\Base;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Fw\Components\News\List;
+namespace Fw\Components\NewsList;
 
 use Fw\Core\Component\Base;
 
