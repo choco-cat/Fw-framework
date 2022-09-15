@@ -1,6 +1,6 @@
 <?php
 
-namespace Fw\Components\InterfaceText;
+namespace Fw\Components\InterfaceInput;
 
 use Fw\Core\Component\Base;
 
@@ -12,6 +12,6 @@ class Component extends Base
 {
     public function executeComponent()
     {
-        $this->template->render();
+        $this->template->render($this->params);
     }
 }

@@ -17,7 +17,7 @@ class Component extends Base
         $elements = $this->params['elements'];
         $this->template->render($this->params, 'header');
         foreach ($elements as $element) {
-            $app->includeComponent('interface.' . $element['type'], $this->template->id, []);
+            $app->includeComponent('interface.input', $this->template->id, $element);
         }
         $this->template->render([], 'footer');
     }

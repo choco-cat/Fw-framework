@@ -13,6 +13,8 @@ $app->header();
     ---------15.09.2022---------
     1. Подключение bootstrap к сайту
     2. Верстка хедера, футера
+    3. Создана структура компонента interface.form
+    4. Создан компонент interface.input для построения элементов input формы
 
     ---------12.09.2022---------
     1. Подключение компонента news.list в Application
@@ -70,6 +72,8 @@ $app->includeComponent(
         'elements' => [
                 ['type' => 'text', 'name' => 'login', 'title' => 'Логин'],
                 ['type' => 'text', 'name' => 'mane', 'title' => 'Имя'],
+                ['type' => 'password', 'name' => 'password', 'title' => 'Пароль'],
+                ['type' => 'checkbox', 'name' => 'iagree', 'title' => 'Согласен с условиями'],
             ]
     ]
 );
