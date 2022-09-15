@@ -12,13 +12,13 @@ class Template
 {
     private $__path;
     private $__relativePath;
-    private $id;
+    public $id;
     public $result;
 
-    public function __construct($id, $page)
+    public function __construct($idComponent, $idTemplate)
     {
-        $this->id = $id;
-        $this->__relativePath = RELATIVE_COMPONENTS_PATH  . $id . '/templates/' . $page . '/';
+        $this->id = $idTemplate;
+        $this->__relativePath = RELATIVE_COMPONENTS_PATH  . $idComponent . '/templates/' . $idTemplate . '/';
     }
 
     public function render($result = [], $page = 'template')

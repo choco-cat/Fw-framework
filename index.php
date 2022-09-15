@@ -66,11 +66,14 @@ $app->includeComponent(
     'interface.form',
     'default',
     [
-        'sort'    => 'id',
-        'limit' => 10,
-        'show_title' => 'N',
+        'additional_class' => 'my-form',
+        'elements' => [
+                ['type' => 'text', 'name' => 'login', 'title' => 'Логин'],
+                ['type' => 'text', 'name' => 'mane', 'title' => 'Имя'],
+            ]
     ]
 );
+
 $app->footer();
 
 ?>
