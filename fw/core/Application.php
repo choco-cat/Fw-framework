@@ -78,8 +78,9 @@ final class Application
         //Глобальные скрипты, стили
         $this->pager->addJs('https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js');
         $this->pager->addCss('https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css');
-        $this->pager->setProperty('site_name', 'Название сайта');
+        $this->pager->setProperty('site_name', 'Создание fw');
         $this->pager->setProperty('site_description', 'О чем этот сайт - длинный текст');
+        $this->pager->setProperty('site_copyright', 'Задание выполнила: Панфиленко Н.В.');
     }
 
     public function header()

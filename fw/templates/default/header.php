@@ -16,7 +16,7 @@ $page = Page::getInstance();
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
+        <div class="container">
             <a href="#" class="navbar-brand"><?php $page->showProperty('site_name'); ?></a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse1">
                 <span class="navbar-toggler-icon"></span>
