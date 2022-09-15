@@ -76,12 +76,8 @@ final class Application
     public function initialPageParams()
     {
         //Глобальные скрипты, стили
-        $this->pager->addJs('https://google.by');
-        $this->pager->addCss('/lib/wd3schools30.css');
-        $this->pager->addJs('https://sсhools30.js');
-        $this->pager->addJs('https://mail.ru');
-        $this->pager->addString('<meta property="og:image:height" content="228">');
-        $this->pager->addString('<meta name="twitter:card" content="summary"/>');
+        $this->pager->addJs('https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js');
+        $this->pager->addCss('https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css');
         $this->pager->setProperty('site_name', 'Название сайта');
         $this->pager->setProperty('site_description', 'О чем этот сайт - длинный текст');
     }
