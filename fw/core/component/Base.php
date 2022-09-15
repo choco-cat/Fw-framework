@@ -20,7 +20,7 @@ abstract class Base
 
     public function __construct($id, $idTemplate, $params)
     {
-        $this->template = new \Fw\Core\Component\Template($id, $idTemplate);
+        $this->template = new Template($id, $idTemplate);
         $this->params = $params;
         $this->id = $id;
         $this->__path = RELATIVE_COMPONENTS_PATH . $id;
