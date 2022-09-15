@@ -4,9 +4,12 @@
  */
 namespace Fw\Core;
 
+use Fw\Core\Request;
+use Fw\Core\Server;
 use Fw\Core\Template;
 use Fw\Core\Page;
 use Fw\Core\Traits\Singleton;
+use Fw\Components;
 
 if (!defined('IN_FW')) {
     exit;
@@ -19,11 +22,36 @@ final class Application
     private $components = [];
     private $pager = null;
     private $template = null;
+    private $request = null;
+    private $server = null;
 
     private function __construct()
     {
         $this->template = Template::getInstance();
         $this->pager = Page::getInstance();
+        $this->request = new Request();
+        $this->server = new Server();
+    }
+
+    public function includeComponent($component, $idTemplate, $params)
+    {
+        include_once(RELATIVE_COMPONENTS_PATH . $component .'\\'. '.class.php');
+        $componentRealPath =
+            COMPONENTS_PATH
+            . str_replace('.', '\\', $component) . '\\'
+            . COMPONENT_CLASS;
+        $component = new $componentRealPath($component, $idTemplate, $params);
+        $component->executeComponent();
+    }
+
+    public function getServer()
+    {
+        return $this->server;
+    }
+
+    public function getRequest()
+    {
+        return $this->request;
     }
 
     public function startBuffer()
@@ -47,8 +75,7 @@ final class Application
 
     public function initialPageParams()
     {
-        $this->pager->addCss('/lib/wd3schools30.css');
-        $this->pager->addJs('https://mail.ru');
+        //Глобальные скрипты, стили
         $this->pager->addJs('https://google.by');
         $this->pager->addCss('/lib/wd3schools30.css');
         $this->pager->addJs('https://sсhools30.js');
