@@ -1,6 +1,6 @@
 <?php
 
-namespace Fw\Components\InterfaceInput;
+namespace Fw\Components\FormInput;
 
 use Fw\Core\Component\Base;
 

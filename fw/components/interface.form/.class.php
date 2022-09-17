@@ -15,10 +15,13 @@ class Component extends Base
     {
         $app = Application::getInstance();
         $elements = $this->params['elements'];
-        $this->template->render($this->params, 'header');
+        $this->params['elements'] = array();
         foreach ($elements as $element) {
-            $app->includeComponent('interface.input', $this->template->id, $element);
+            ob_start();
+            $app->includeComponent('form.input', $this->template->id, $element);
+            $this->params['htmlElements'][] = ob_get_contents();
+            ob_end_clean();
         }
-        $this->template->render([], 'footer');
+        $this->template->render($this->params);
     }
 }

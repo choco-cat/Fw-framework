@@ -70,11 +70,15 @@ $app->includeComponent(
     [
         'additional_class' => 'my-form',
         'elements' => [
-                ['type' => 'text', 'name' => 'login', 'title' => 'Логин'],
-                ['type' => 'text', 'name' => 'mane', 'title' => 'Имя'],
-                ['type' => 'password', 'name' => 'password', 'title' => 'Пароль'],
-                ['type' => 'checkbox', 'name' => 'iagree', 'title' => 'Согласен с условиями'],
-            ]
+            [
+                'type' => 'text',
+                'name' => 'login',
+                'title' => 'Логин',
+                'default' => 'Введите логин'],
+            ['type' => 'text', 'name' => 'mane', 'title' => 'Имя', 'default' => 'Введите имя'],
+            ['type' => 'password', 'name' => 'password', 'title' => 'Пароль', 'default' => 'Введите пароль'],
+            ['type' => 'checkbox', 'name' => 'iagree', 'title' => 'Согласен с условиями'],
+        ]
     ]
 );
 
