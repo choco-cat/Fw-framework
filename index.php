@@ -84,9 +84,10 @@ $app->includeComponent(
                 'title' => 'Логин',
                 'default' => 'Введите логин'],
             [
-                'name' => 'mane',
-                'title' => 'Имя',
-                'default' => 'Введите имя',
+                'type' => 'number',
+                'name' => 'age',
+                'title' => 'Возраст',
+                'default' => 'Введите возраст',
                 'additional_class' => 'form-control',
             ],
             [
