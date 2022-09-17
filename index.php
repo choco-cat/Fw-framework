@@ -131,6 +131,18 @@ $app->includeComponent(
                 'title' => 'Немного о себе',
                 'default' => 'Несколько строк',
             ],
+            [
+                'type' => 'radio',
+                'name' => 'gender',
+                'title' => 'Жен',
+                'additional_class' => 'form-check-input',
+            ],
+            [
+                'type' => 'radio',
+                'name' => 'gender',
+                'title' => 'Муж',
+                'additional_class' => 'form-check-input',
+            ],
         ]
     ]
 );
