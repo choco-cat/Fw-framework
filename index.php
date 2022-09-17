@@ -69,6 +69,9 @@ $app->includeComponent(
     'default',
     [
         'additional_class' => 'my-form',
+        'attr' => ['data-form-id' =>'form-123'],
+        'method' => 'post',
+        'action' => '/',
         'elements' => [
             [
                 'type' => 'text',
