@@ -11,6 +11,18 @@ if (!defined('IN_FW')) {
 
 class Component extends Base
 {
+    public function __construct($id, $idTemplate, $params)
+    {
+        parent::__construct($id, $idTemplate, $params);
+        $this->params += array(
+            'additional_class' => '',
+            'method' => 'post',
+            'action' => '',
+            'attr' => array(),
+            'elements' => array(),
+        );
+    }
+
     public function executeComponent()
     {
         $app = Application::getInstance();

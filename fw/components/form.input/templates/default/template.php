@@ -6,7 +6,7 @@ if (!defined('IN_FW')) {
 <label for="<?=$this->result['name']?>" class="form-label"><?=$this->result['title']?></label>
 <input
         type="<?=$this->result['type']?>"
-        class="<?=$this->result['additional_class'] ?? '' ?>"
+        class="<?=$this->result['additional_class']?>"
         id="<?=$this->result['name']?>"
-        placeholder="<?=$this->result['default'] ?? ''?>"
+        placeholder="<?=$this->result['default']?>"
 />
