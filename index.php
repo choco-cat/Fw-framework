@@ -74,10 +74,28 @@ $app->includeComponent(
                 'type' => 'text',
                 'name' => 'login',
                 'title' => 'Логин',
+                'additional_class' => 'form-control',
                 'default' => 'Введите логин'],
-            ['type' => 'text', 'name' => 'mane', 'title' => 'Имя', 'default' => 'Введите имя'],
-            ['type' => 'password', 'name' => 'password', 'title' => 'Пароль', 'default' => 'Введите пароль'],
-            ['type' => 'checkbox', 'name' => 'iagree', 'title' => 'Согласен с условиями'],
+            [
+                'type' => 'text',
+                'name' => 'mane',
+                'title' => 'Имя',
+                'default' => 'Введите имя',
+                'additional_class' => 'form-control',
+            ],
+            [
+                'type' => 'password',
+                'name' => 'password',
+                'title' => 'Пароль',
+                'default' => 'Введите пароль',
+                'additional_class' => 'form-control',
+            ],
+            [
+                'type' => 'checkbox',
+                'name' => 'iagree',
+                'title' => 'Согласен с условиями',
+                'additional_class' => 'form-check-input',
+            ],
         ]
     ]
 );
