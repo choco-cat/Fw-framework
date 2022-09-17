@@ -17,15 +17,15 @@ $page = Page::getInstance();
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a href="#" class="navbar-brand"><?php $page->showProperty('site_name'); ?></a>
+            <a href="/index.php" class="navbar-brand"><?php $page->showProperty('site_name'); ?></a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse1">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse1">
                 <div class="navbar-nav">
-                    <a href="#" class="nav-item nav-link active">Home</a>
-                    <a href="#" class="nav-item nav-link">About</a>
-                    <a href="#" class="nav-item nav-link">Products</a>
+                    <a href="/index.php" class="nav-item nav-link active">Home</a>
+                    <a href="/news.php" class="nav-item nav-link">News</a>
+                    <a href="/form.php" class="nav-item nav-link">Form</a>
                 </div>
                 <form class="d-flex ms-auto">
                     <input type="text" class="form-control me-sm-2" placeholder="Search">
