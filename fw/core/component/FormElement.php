@@ -8,7 +8,7 @@ if (!defined('IN_FW')) {
     exit;
 }
 
-abstract class FormElement extends Base
+class FormElement extends Base
 {
     public function __construct($id, $idTemplate, $params)
     {
@@ -20,6 +20,12 @@ abstract class FormElement extends Base
             'attr' => array(),
             'title' => '',
             'default' => '',
+            'list' => array(),
         );
+    }
+
+    public function executeComponent()
+    {
+        $this->template->render($this->params);
     }
 }

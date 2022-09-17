@@ -29,8 +29,15 @@ class Component extends Base
         $elements = $this->params['elements'];
         $this->params['elements'] = array();
         foreach ($elements as $element) {
+            switch ($element['type']) {
+                case 'select':
+                    $type = $element['type'];
+                    break;
+                default:
+                    $type = 'input';
+            }
             ob_start();
-            $app->includeComponent('form.input', $this->template->id, $element);
+            $app->includeComponent('form.'.$type, $this->template->id, $element);
             $this->params['htmlElements'][] = ob_get_contents();
             ob_end_clean();
         }

@@ -14,6 +14,7 @@ $app->header();
     1. Включение элементов формы в форму в шаблоне
     2. Создан абстрактный класс FormElement для построения инпута формы и инициализации
     значений по умолчанию параметров инпута
+    3. Создан класс для элемента select
 
     ---------15.09.2022---------
     1. Подключение bootstrap к сайту
@@ -103,6 +104,26 @@ $app->includeComponent(
                 'title' => 'Согласен с условиями',
                 'additional_class' => 'form-check-input',
             ],
+            [
+                'type' => 'select',
+                'name' => 'server',
+                'additional_class' => 'js-login',
+                'attr' => ['data-id' => '17'],
+                'title' => 'Выберите сервер',
+                'list' => [
+                    [
+                        'title' => 'Онлайнер',
+                        'value' => 'onliner',
+                        'additional_class' => 'mini--option',
+                        'attr' => ['data-id' => '188'],
+                        ],
+                    [
+                        'title' => 'Тутбай',
+                        'value' => 'tut',
+                        'selected' => true,
+                    ]
+                ]
+            ]
         ]
     ]
 );
