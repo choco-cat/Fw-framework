@@ -85,7 +85,8 @@ $app->includeComponent(
                 'type' => 'text',
                 'name' => 'login',
                 'title' => 'Логин',
-                'default' => 'Введите логин'],
+                'default' => 'Введите логин'
+            ],
             [
                 'type' => 'number',
                 'name' => 'age',

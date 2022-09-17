@@ -10,10 +10,18 @@ if (!defined('IN_FW')) {
 
 class Component extends FormElement
 {
+    public function __construct($id, $idTemplate, $params)
+    {
+        parent::__construct($id, $idTemplate, $params);
+        $this->params += array(
+            'multiple' => false,
+            'list' =>  array(),
+        );
+    }
+
     public function executeComponent()
     {
         $options = $this->params['list'];
-        $this->params['multiple'] = $this->params['multiple'] ?? false;
         foreach ($options as $key => $option) {
             $optionElement = new FormElement(null, '', $option);
             $this->params['options'][$key] = $optionElement->params;

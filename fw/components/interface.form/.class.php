@@ -32,7 +32,9 @@ class Component extends Base
 
         foreach ($elements as $element) {
             $type = 'input';
-            $type = in_array($element['type'], ['select', 'textarea']) ? $element['type'] : $type;
+            $type = in_array($element['type'], ['select', 'textarea'])
+                    ? $element['type']
+                    : $type;
             ob_start();
             $app->includeComponent('form.'.$type, $this->template->id, $element);
             $this->params['htmlElements'][] = ob_get_contents();

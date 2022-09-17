@@ -20,7 +20,6 @@ class FormElement extends Base
             'attr' => array(),
             'title' => '',
             'default' => '',
-            'list' => array(),
         );
     }
 
