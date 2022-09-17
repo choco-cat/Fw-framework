@@ -108,7 +108,6 @@ $app->includeComponent(
             [
                 'type' => 'select',
                 'name' => 'server',
-                'additional_class' => 'js-login',
                 'attr' => ['data-id' => '17'],
                 'title' => 'Выберите сервер',
                 'list' => [
@@ -142,6 +141,33 @@ $app->includeComponent(
                 'name' => 'gender',
                 'title' => 'Муж',
                 'additional_class' => 'form-check-input',
+            ],
+            [
+                'type' => 'select',
+                'name' => 'server2',
+                'additional_class' => 'js-login',
+                'attr' => ['data-id' => '19'],
+                'title' => 'Выберите страну',
+                'multiple' => 'true',
+                'list' => [
+                    [
+                        'title' => 'Беларусь',
+                        'value' => 'rb',
+                        'additional_class' => 'mini--option',
+                        'attr' => ['data-id' => '189'],
+                        'selected' => true,
+                    ],
+                    [
+                        'title' => 'США',
+                        'value' => 'usa',
+                        'additional_class' => 'mini--option',
+                    ],
+                    [
+                        'title' => 'Россия',
+                        'value' => 'russia',
+                        'additional_class' => 'mini--option',
+                    ]
+                ]
             ],
         ]
     ]

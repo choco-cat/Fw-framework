@@ -13,6 +13,7 @@ class Component extends FormElement
     public function executeComponent()
     {
         $options = $this->params['list'];
+        $this->params['multiple'] = $this->params['multiple'] ?? false;
         foreach ($options as $key => $option) {
             $optionElement = new FormElement(null, '', $option);
             $this->params['options'][$key] = $optionElement->params;
