@@ -28,14 +28,11 @@ class Component extends Base
         $app = Application::getInstance();
         $elements = $this->params['elements'];
         $this->params['elements'] = array();
+
+
         foreach ($elements as $element) {
-            switch ($element['type']) {
-                case 'select':
-                    $type = $element['type'];
-                    break;
-                default:
-                    $type = 'input';
-            }
+            $type = 'input';
+            $type = in_array($element['type'], ['select', 'textarea']) ? $element['type'] : $type;
             ob_start();
             $app->includeComponent('form.'.$type, $this->template->id, $element);
             $this->params['htmlElements'][] = ob_get_contents();

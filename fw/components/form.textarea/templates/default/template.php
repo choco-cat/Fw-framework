@@ -4,7 +4,7 @@ if (!defined('IN_FW')) {
 }
 ?>
 <label for="<?=$this->result['name']?>" class="form-label"><?=$this->result['title']?></label>
-<input
+<textarea
         type="<?=$this->result['type']?>"
         class="<?=$this->result['additional_class']?>"
         id="<?=$this->result['name']?>"
@@ -12,4 +12,4 @@ if (!defined('IN_FW')) {
         <?php foreach ($this->result['attr'] as $key => $param): ?>
         <?=$key?>="<?=$param?>"
         <?php endforeach; ?>
-/>
+></textarea>

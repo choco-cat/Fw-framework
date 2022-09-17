@@ -103,6 +103,7 @@ $app->includeComponent(
                 'name' => 'iagree',
                 'title' => 'Согласен с условиями',
                 'additional_class' => 'form-check-input',
+                'attr' => ['data-id' => '18'],
             ],
             [
                 'type' => 'select',
@@ -123,7 +124,13 @@ $app->includeComponent(
                         'selected' => true,
                     ]
                 ]
-            ]
+            ],
+            [
+                'type' => 'textarea',
+                'name' => 'about',
+                'title' => 'Немного о себе',
+                'default' => 'Несколько строк',
+            ],
         ]
     ]
 );
