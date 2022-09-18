@@ -4,9 +4,12 @@
  */
 namespace Fw\Core;
 
+use Fw\Core\Request;
+use Fw\Core\Server;
 use Fw\Core\Template;
 use Fw\Core\Page;
 use Fw\Core\Traits\Singleton;
+use Fw\Components;
 
 if (!defined('IN_FW')) {
     exit;
@@ -19,11 +22,36 @@ final class Application
     private $components = [];
     private $pager = null;
     private $template = null;
+    private $request = null;
+    private $server = null;
 
     private function __construct()
     {
         $this->template = Template::getInstance();
         $this->pager = Page::getInstance();
+        $this->request = new Request();
+        $this->server = new Server();
+    }
+
+    public function includeComponent($component, $idTemplate, $params)
+    {
+        include_once(RELATIVE_COMPONENTS_PATH . $component .'\\'. '.class.php');
+        $componentRealPath =
+            COMPONENTS_PATH
+            . str_replace('.', '', $component) . '\\'
+            . COMPONENT_CLASS;
+        $component = new $componentRealPath($component, $idTemplate, $params);
+        $component->executeComponent();
+    }
+
+    public function getServer()
+    {
+        return $this->server;
+    }
+
+    public function getRequest()
+    {
+        return $this->request;
     }
 
     public function startBuffer()
@@ -47,16 +75,12 @@ final class Application
 
     public function initialPageParams()
     {
-        $this->pager->addCss('/lib/wd3schools30.css');
-        $this->pager->addJs('https://mail.ru');
-        $this->pager->addJs('https://google.by');
-        $this->pager->addCss('/lib/wd3schools30.css');
-        $this->pager->addJs('https://sсhools30.js');
-        $this->pager->addJs('https://mail.ru');
-        $this->pager->addString('<meta property="og:image:height" content="228">');
-        $this->pager->addString('<meta name="twitter:card" content="summary"/>');
-        $this->pager->setProperty('site_name', 'Название сайта');
+        //Глобальные скрипты, стили
+        $this->pager->addJs('https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js');
+        $this->pager->addCss('https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css');
+        $this->pager->setProperty('site_name', 'Создание fw');
         $this->pager->setProperty('site_description', 'О чем этот сайт - длинный текст');
+        $this->pager->setProperty('site_copyright', 'Задание выполнила: Панфиленко Н.В.');
     }
 
     public function header()

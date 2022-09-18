@@ -1,4 +1,5 @@
 <?php
+
 namespace Fw\Core\Traits;
 
 if (!defined('IN_FW')) {
