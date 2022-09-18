@@ -8,12 +8,12 @@ class Validator
 {
     private $validator;
 
-    public function __construct($type, $typeValue)
+    public function __construct($type, $typeValue = '')
     {
         $this->validator = ValidatorFactory::build($type, $typeValue);
     }
 
     public function exec($value) {
-        echo $this->validator->validate($value);
+        return $this->validator->validate($value);
     }
 }

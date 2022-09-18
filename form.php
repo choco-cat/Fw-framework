@@ -113,6 +113,18 @@ $app->includeComponent(
 );
 
 $valid = new Validator('maxLength', 5);
-echo $valid->exec(3);
+echo '<br>maxLength 5: ' .  $valid->exec(3);
+
+$valid = new Validator('regexp', '#^([\w]+\.?)+(?<!\.)@(?!\.)[a-zа-я0-9ё\.-]+\.?[a-zа-яё]{2,}$#ui');
+echo '<br>regexp for email: ' . $valid->exec('sdfdsf@mail.ru');
+
+$valid = new Validator('email');
+echo '<br>email: ' . $valid->exec('aaaaaa@mail.ru');
+
+$valid = new Validator('in', [2, 4, 6]);
+echo '<br>in: ' . $valid->exec(4);
+
+$valid = new Validator('number');
+echo '<br>number: ' . $valid->exec(44);
 
 $app->footer();
