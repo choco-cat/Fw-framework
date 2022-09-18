@@ -8,6 +8,6 @@ class Regexp extends BaseValidator
 {
     public function validate($value)
     {
-        return preg_match($this->typeValue, $value, $matches);
+        return preg_match($this->rule, $value, $matches);
     }
 }

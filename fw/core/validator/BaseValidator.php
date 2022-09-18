@@ -4,13 +4,14 @@ namespace Fw\Core\Validator;
 
 abstract class BaseValidator
 {
-    private $rule;
+    protected $rule;
     private $type;
-    protected $typeValue;
 
-    public function __construct($type, $typeValue)
+    public function __construct($type, $rule)
     {
         $this->type = $type;
-        $this->typeValue = $typeValue;
+        $this->rule = $rule;
     }
+
+    abstract function validate($value);
 }

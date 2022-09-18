@@ -4,14 +4,11 @@ namespace Fw\Core\Validator;
 
 class ValidatorFactory
 {
-    private $type;
-    private $typeValue;
-
-    public static function build($type,  $typeValue = null)
+    public static function build($type,  $rule = null)
     {
         $validator = "Fw\\Core\\Validator\\" . ucfirst($type);
         if (class_exists($validator)) {
-            return new $validator($type, $typeValue);
+            return new $validator($type, $rule);
         } else {
             throw new \Exception("Неверный тип правила");
         }

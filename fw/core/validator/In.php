@@ -8,9 +8,9 @@ class In extends BaseValidator
 {
     public function validate($value)
     {
-        if (!is_array($this->typeValue)) {
+        if (!is_array($this->rule)) {
             return false;
         }
-        return (in_array($value, $this->typeValue));
+        return (in_array($value, $this->rule));
     }
 }

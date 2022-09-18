@@ -113,7 +113,7 @@ $app->includeComponent(
 );
 
 $valid = new Validator('maxLength', 5);
-echo '<br>maxLength 5: ' .  $valid->exec(3);
+echo '<br>maxLength: ' .  $valid->exec(3);
 
 $valid = new Validator('regexp', '#^([\w]+\.?)+(?<!\.)@(?!\.)[a-zа-я0-9ё\.-]+\.?[a-zа-яё]{2,}$#ui');
 echo '<br>regexp for email: ' . $valid->exec('sdfdsf@mail.ru');
@@ -126,5 +126,17 @@ echo '<br>in: ' . $valid->exec(4);
 
 $valid = new Validator('number');
 echo '<br>number: ' . $valid->exec(44);
+
+$valid = new Validator(
+    'chain',
+    true,
+    [
+        new Validator('minLength', 5),
+        new Validator('regexp', '#^[a-z@\.]+$#'),
+        new Validator('email'),
+        new Validator('maxLength', 14),
+    ]
+);
+echo '<br>complex condition: ' . $valid->exec('sfdfds@mail.ru');
 
 $app->footer();
