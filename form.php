@@ -1,6 +1,7 @@
 <?php
 
 use Fw\Core\Application;
+use Fw\Core\Validator;
 
 include './fw/init.php';
 
@@ -110,5 +111,8 @@ $app->includeComponent(
         ]
     ]
 );
+
+$valid = new Validator('maxLength', 5);
+echo $valid->exec(3);
 
 $app->footer();
