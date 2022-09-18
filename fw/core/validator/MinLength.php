@@ -6,7 +6,7 @@ use Fw\Core\Validator\BaseValidator;
 
 class MinLength extends BaseValidator
 {
-    public function getName() {
-        return 'MinLength';
+    public function validate($value) {
+        return $this->typeValue <= $value;
     }
 }
